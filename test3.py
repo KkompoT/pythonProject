@@ -25,6 +25,5 @@ class Auto:
 car1 = Auto("vw", 10, "black", "pas", "2")
 car1.move()
 car1.birthday()
-car1.show_birthday()
 car1.stop()
 
