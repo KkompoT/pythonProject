@@ -34,6 +34,19 @@ matrix = [
 ]
 
 
+def decor_time(func):
+    from datetime import datetime
+
+    def wrapper(*args, **kwargs):
+        start = datetime.now()
+        func(*args, **kwargs)
+        end = datetime.now()
+        print(f"время выполнения функции: {end - start} секунд.")
+
+    return wrapper
+
+
+@decor_time
 def sum_element():
     s = []
     for string in matrix:
@@ -41,8 +54,12 @@ def sum_element():
     return sum(s)
 
 
+@decor_time
 def count_element():
     count = 0
     for el in matrix:
         count += len(el)
     return count
+
+sum_element()
+count_element()
