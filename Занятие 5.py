@@ -9,7 +9,7 @@ print(num(201))
 """Дан список чисел. Вернуть список , где припомощи функции map() каждое число переведено в строку. в качестве
                                     функции в map использовать lambda"""
 list1 = [24.51, 24.17, 20.18, 27.57, 25.0, 26.49, 21.0, 24.91, 25.39]
-str1 = list(map(lambda x: f"{x}", list1))
+str1 = list(map(lambda x: str(x), list1))
 print(type(str1), str1)
 
 # =================__-3-__=================
@@ -19,7 +19,7 @@ print(type(str1), str1)
 
 tuple1 = ("довод", "получил", "ушел", "доход", "заказ")
 poly = list(filter(lambda x: x == x[::-1], tuple1))
-print(list(poly))
+print(poly)
 
 # =================__-4-__=================
 
@@ -33,10 +33,10 @@ matrix = [
     [40, 41, 42, 43, 44],
 ]
 
+from datetime import datetime
+
 
 def decor_time(func):
-    from datetime import datetime
-
     def wrapper(*args, **kwargs):
         start = datetime.now()
         func(*args, **kwargs)
@@ -60,6 +60,7 @@ def count_element():
     for el in matrix:
         count += len(el)
     return count
+
 
 sum_element()
 count_element()
