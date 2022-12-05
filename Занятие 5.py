@@ -68,29 +68,31 @@ count_element()
 
 """Сделать функцию которая на вход принимает строку. Анализирует ее методом .isdigit
 функция умеет распозновать отрицательные числа и десятичные дроби"""
-def str1():
-    x = input()
+def str1(x) -> str:
     if x.isdigit():
         x = int(x)
         if x > 0:
-            print(f"Вы ввели положительное число: {x}")
-
+            return f'Положительное число: {x}'
     else:
-        if x[0] == '-' and x[1::].isdigit():
-            x = int(x)
-            print(f"Вы ввели отрицательное число: {x}")
-        else:
-            if '.' in x:
-                x2 = x.replace('.','')
-                if x2[1::].isdigit():
-                    x = float(x)
-                    if x < 0:
-                        print(f"Вы ввели отрицательное дробное число: {x}")
-                    else:
-                        print(f"Вы ввели положительное дробное число: {x}")
-                else:
-                    print(f"Вы ввели не кореректное число: {x}")
+        if x[0] == "-" and not '.' in x:
+            if x[1::].isdigit():
+                x = int(x)
+                return f'отрицательное число: {x}'
+        if '.' in x and not x[0] == "-":
+            x2 = x.replace('.', '', 1)
+            if x2.isdigit():
+                x = float(x)
+                if x > 0:
+                    return f'Положительное дробное число: {x}'
             else:
-                print(f"Вы ввели не кореректное число: {x}")
+                return f'не корректное число: {x}'
+        if x[0] == "-" and '.' in x:
+            x3 = x.replace('.', '', 1)
+            if x3[1::].isdigit():
+                return f'Отрицательное дробное число: {x}'
+            else:
+                return f'не корректное число: {x}'
+        return f'не корректное число: {x}'
 
-str1()
+
+print(str1('4.5f'))
